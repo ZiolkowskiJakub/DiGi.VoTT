@@ -12,7 +12,7 @@ namespace DiGi.VoTT
                 return false;
             }
 
-            if(asset.asset == null)
+            if(asset.id == null)
             {
                 return false;
             }
@@ -22,25 +22,25 @@ namespace DiGi.VoTT
                 voTTModel.assets = new Dictionary<string, Asset>();
             }
 
-            voTTModel.assets[asset.asset] = asset;
+            voTTModel.assets[asset.id] = asset;
 
             if(asset.regions != null)
             {
                 foreach(Region region in asset.regions)
                 {
-                    if(!string.IsNullOrWhiteSpace(region?.tagName))
+                    if(string.IsNullOrWhiteSpace(region?.tagName))
                     {
                         continue;
                     }
 
                     if(voTTModel.tags == null)
                     {
-                        voTTModel.tags = new List<string>();
+                        voTTModel.tags = new List<Tag>();
                     }
 
-                    if(!voTTModel.tags.Contains(region.tagName))
+                    if(voTTModel.tags.Find(x => region.tagName == x?.name) == null)
                     {
-                        voTTModel.tags.Add(region.tagName);
+                        voTTModel.tags.Add(Create.Tag(region.tagName));
                     }
                 }
             }
@@ -48,9 +48,9 @@ namespace DiGi.VoTT
             return true;
         }
 
-        public static bool Add(this VoTTModel voTTModel, string asset, Region region)
+        public static bool Add(this VoTTModel voTTModel, string assetId, Region region)
         {
-            if (voTTModel == null || asset == null || region == null)
+            if (voTTModel == null || assetId == null || region == null)
             {
                 return false;
             }
@@ -60,15 +60,15 @@ namespace DiGi.VoTT
                 voTTModel.assets = new Dictionary<string, Asset>();
             }
 
-            if(!voTTModel.assets.TryGetValue(asset, out Asset asset_Temp) || asset_Temp == null)
+            if(!voTTModel.assets.TryGetValue(assetId, out Asset asset_Temp) || asset_Temp == null)
             {
-                asset_Temp = Create.Asset(asset);
+                asset_Temp = Create.Asset_ById(assetId);
                 if(asset_Temp == null)
                 {
                     return false;
                 }
 
-                voTTModel.assets[asset] = asset_Temp;
+                voTTModel.assets[assetId] = asset_Temp;
             }
 
             if(asset_Temp.regions == null)
@@ -89,9 +89,9 @@ namespace DiGi.VoTT
             return true;
         }
 
-        public static bool Add(this VoTTModel voTTModel, string asset, BoundingBox boundingBox, string tagName)
+        public static bool Add(this VoTTModel voTTModel, string assetId, BoundingBox boundingBox, string tagName)
         {
-            if (voTTModel == null || asset == null || boundingBox == null || string.IsNullOrWhiteSpace(tagName))
+            if (voTTModel == null || assetId == null || boundingBox == null || string.IsNullOrWhiteSpace(tagName))
             {
                 return false;
             }
@@ -102,13 +102,13 @@ namespace DiGi.VoTT
                 return false;
             }
 
-            return Add(voTTModel, asset, region);
+            return Add(voTTModel, assetId, region);
 
         }
 
-        public static bool Add(this VoTTModel voTTModel, string asset, IEnumerable<Point> points, string tagName)
+        public static bool Add(this VoTTModel voTTModel, string assetId, IEnumerable<Point> points, string tagName)
         {
-            if (voTTModel == null || asset == null || points == null || string.IsNullOrWhiteSpace(tagName))
+            if (voTTModel == null || assetId == null || points == null || string.IsNullOrWhiteSpace(tagName))
             {
                 return false;
             }
@@ -119,7 +119,7 @@ namespace DiGi.VoTT
                 return false;
             }
 
-            return Add(voTTModel, asset, region);
+            return Add(voTTModel, assetId, region);
         }
     }
 }
