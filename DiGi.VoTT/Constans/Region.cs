@@ -2,7 +2,13 @@
 {
     public static class Region
     {
-        public const string Type = "RECTANGLE";
+        public static class Type
+        {
+            public const string Rectangle = "RECTANGLE";
+            public const string Polygon = "POLYGON";
+        }
+
+        
     }
 }
 
