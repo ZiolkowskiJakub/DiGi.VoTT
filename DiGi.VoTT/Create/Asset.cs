@@ -31,7 +31,7 @@ namespace DiGi.VoTT
             {
                 format = System.IO.Path.GetExtension(path).Substring(1),
                 name = System.IO.Path.GetFileName(path),
-                path = string.Format("file:{0}", WebUtility.UrlEncode(path)),
+                path = string.Format("file:{0}", path.Replace(" ", "%20").Replace(@"\", "/")),
                 size = Size(path),
                 state = (short)Enums.AssetState.NotVisited,
                 type = (short)Enums.AssetType.Image,

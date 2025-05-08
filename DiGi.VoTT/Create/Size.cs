@@ -15,8 +15,7 @@ namespace DiGi.VoTT
 
             using (Bitmap bitmap = new Bitmap(path))
             {
-                result.width = bitmap.Width;
-                result.height = bitmap.Height;
+                result = new Classes.Size(bitmap.Width, bitmap.Height);
             }
 
             return result;

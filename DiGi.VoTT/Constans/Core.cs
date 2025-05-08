@@ -2,7 +2,7 @@
 {
     public static class Core
     {
-        public const string Version = "2.1.0";
+        public const string Version = "2.2.0";
     }
 }
 

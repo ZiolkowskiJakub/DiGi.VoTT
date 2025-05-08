@@ -7,7 +7,7 @@ namespace DiGi.VoTT.Classes
     {
         public string id { get; set; } = Guid.NewGuid().ToString("N");
         public string type { get; set; } = Constans.Region.Type.Rectangle;
-        public string tagName { get; set; }
+        public List<string> tags { get; set; }
         public BoundingBox boundingBox { get; set; }
         public List<Point> points { get; set; }
     }
