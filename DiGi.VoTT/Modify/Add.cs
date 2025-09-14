@@ -5,7 +5,7 @@ namespace DiGi.VoTT
 {
     public static partial class Modify
     {
-        public static bool Add(this VoTTModel voTTModel, Asset asset)
+        public static bool Add(this VoTTModel? voTTModel, Asset? asset)
         {
             if (voTTModel == null || asset == null)
             {
@@ -17,10 +17,7 @@ namespace DiGi.VoTT
                 return false;
             }
 
-            if (voTTModel.assets == null)
-            {
-                voTTModel.assets = new Dictionary<string, AssetData>();
-            }
+            voTTModel.assets ??= [];
 
             if(!voTTModel.assets.TryGetValue(asset.id, out AssetData assetData) || assetData == null)
             {
@@ -37,7 +34,7 @@ namespace DiGi.VoTT
             return true;
         }
         
-        public static bool Add(this VoTTModel voTTModel, AssetData assetData)
+        public static bool Add(this VoTTModel? voTTModel, AssetData? assetData)
         {
             if(voTTModel == null || assetData?.asset == null)
             {
@@ -49,10 +46,7 @@ namespace DiGi.VoTT
                 return false;
             }
 
-            if(voTTModel.assets == null)
-            {
-                voTTModel.assets = new Dictionary<string, AssetData>();
-            }
+            voTTModel.assets ??= [];
 
             voTTModel.assets[assetData.asset.id] = assetData;
 
@@ -74,17 +68,14 @@ namespace DiGi.VoTT
             return true;
         }
 
-        public static bool Add(this VoTTModel voTTModel, string assetId, Region region)
+        public static bool Add(this VoTTModel? voTTModel, string? assetId, Region? region)
         {
             if (voTTModel == null || assetId == null || region == null)
             {
                 return false;
             }
 
-            if (voTTModel.assets == null)
-            {
-                voTTModel.assets = new Dictionary<string, AssetData>();
-            }
+            voTTModel.assets ??= [];
 
             if (!voTTModel.assets.TryGetValue(assetId, out AssetData assetData_Temp) || assetData_Temp == null)
             {
@@ -101,10 +92,7 @@ namespace DiGi.VoTT
                 voTTModel.assets[assetId] = assetData_Temp;
             }
 
-            if (assetData_Temp.regions == null)
-            {
-                assetData_Temp.regions = new List<Region>();
-            }
+            assetData_Temp.regions ??= [];
 
             int index = assetData_Temp.regions.FindIndex(x => x.id == region.id);
             if (index == -1)
@@ -127,14 +115,14 @@ namespace DiGi.VoTT
             return true;
         }
 
-        public static bool Add(this VoTTModel voTTModel, string assetId, BoundingBox boundingBox, string tagName)
+        public static bool Add(this VoTTModel? voTTModel, string? assetId, BoundingBox? boundingBox, string? tagName)
         {
             if (voTTModel == null || assetId == null || boundingBox == null || string.IsNullOrWhiteSpace(tagName))
             {
                 return false;
             }
 
-            Region region = Create.Region(boundingBox, tagName);
+            Region? region = Create.Region(boundingBox, tagName!);
             if(region == null)
             {
                 return false;
@@ -144,14 +132,14 @@ namespace DiGi.VoTT
 
         }
 
-        public static bool Add(this VoTTModel voTTModel, string assetId, IEnumerable<Point> points, string tagName)
+        public static bool Add(this VoTTModel? voTTModel, string? assetId, IEnumerable<Point>? points, string? tagName)
         {
             if (voTTModel == null || assetId == null || points == null || string.IsNullOrWhiteSpace(tagName))
             {
                 return false;
             }
 
-            Region region = Create.Region(points, tagName);
+            Region? region = Create.Region(points, tagName);
             if (region == null)
             {
                 return false;
@@ -160,21 +148,18 @@ namespace DiGi.VoTT
             return Add(voTTModel, assetId, region);
         }
 
-        public static bool Add(this VoTTModel voTTModel, string tagName)
+        public static bool Add(this VoTTModel? voTTModel, string? tagName)
         {
             if(voTTModel == null || string.IsNullOrWhiteSpace(tagName))
             {
                 return false;
             }
 
-            if(voTTModel.tags == null)
-            {
-                voTTModel.tags = new List<Tag>();
-            }
+            voTTModel.tags ??= [];
 
             if(voTTModel.tags.Find(x => x.name == tagName) == null)
             {
-                Tag tag = Create.Tag(tagName);
+                Tag? tag = Create.Tag(tagName);
                 if(tag == null)
                 {
                     return false;

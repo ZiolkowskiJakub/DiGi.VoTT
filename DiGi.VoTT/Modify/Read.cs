@@ -6,7 +6,7 @@ namespace DiGi.VoTT
 {
     public static partial class Modify
     {
-        public static VoTTModel Read(string path)
+        public static VoTTModel? Read(string? path)
         {
             if(string.IsNullOrWhiteSpace(path) || !File.Exists(path))
             {
@@ -20,13 +20,13 @@ namespace DiGi.VoTT
             }
 
 
-            JsonSerializerOptions jsonSerializerOptions = new JsonSerializerOptions 
+            JsonSerializerOptions jsonSerializerOptions = new()
             { 
                 WriteIndented = true 
             };
 
 
-            VoTTModel result = JsonSerializer.Deserialize<VoTTModel>(json, jsonSerializerOptions);
+            VoTTModel? result = JsonSerializer.Deserialize<VoTTModel>(json, jsonSerializerOptions);
             
             return result;
         }

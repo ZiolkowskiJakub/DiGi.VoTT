@@ -18,7 +18,7 @@ namespace DiGi.VoTT
                 return false;
             }
 
-            JsonSerializerOptions jsonSerializerOptions = new JsonSerializerOptions 
+            JsonSerializerOptions jsonSerializerOptions = new()
             { 
                 WriteIndented = true 
             };

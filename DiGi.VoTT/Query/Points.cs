@@ -6,7 +6,7 @@ namespace DiGi.VoTT
 {
     public static partial class Query
     {
-        public static BoundingBox BoundingBox(this IEnumerable<Point> points)
+        public static BoundingBox? BoundingBox(this IEnumerable<Point>? points)
         {
             if (points == null || points.Count() < 2)
             {

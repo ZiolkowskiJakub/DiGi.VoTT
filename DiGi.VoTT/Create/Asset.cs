@@ -1,18 +1,17 @@
 ﻿using DiGi.VoTT.Classes;
-using System.Net;
 
 namespace DiGi.VoTT
 {
     public static partial class Create
     {
-        public static Asset Asset_ById(string id)
+        public static Asset? Asset_ById(string? id)
         {
             if (id == null)
             {
                 return null;
             }
 
-            Asset result = new Asset()
+            Asset result = new ()
             {
                 id = id,
             };
@@ -20,18 +19,18 @@ namespace DiGi.VoTT
             return result;
         }
 
-        public static Asset Asset(string path)
+        public static Asset? Asset(string? path)
         {
             if (string.IsNullOrWhiteSpace(path) || !System.IO.File.Exists(path))
             {
                 return null;
             }
 
-            Asset result = new Asset()
+            Asset result = new ()
             {
                 format = System.IO.Path.GetExtension(path).Substring(1),
                 name = System.IO.Path.GetFileName(path),
-                path = string.Format("file:{0}", path.Replace(" ", "%20").Replace(@"\", "/")),
+                path = string.Format("file:{0}", path!.Replace(" ", "%20").Replace(@"\", "/")),
                 size = Size(path),
                 state = (short)Enums.AssetState.NotVisited,
                 type = (short)Enums.AssetType.Image,

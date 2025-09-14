@@ -11,7 +11,7 @@ namespace DiGi.VoTT.Classes
         public string description { get; set; } = string.Empty;
         public string format { get; set; } = Constans.VoTTModel.Format;
         public string version { get; set; } = Constans.Core.Version;
-        public List<Tag> tags { get; set; }
-        public Dictionary<string, AssetData> assets { get; set; } = new Dictionary<string, AssetData>();
+        public List<Tag>? tags { get; set; }
+        public Dictionary<string, AssetData> assets { get; set; } = [];
     }
 }

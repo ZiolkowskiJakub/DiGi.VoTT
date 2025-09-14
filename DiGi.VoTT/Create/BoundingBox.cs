@@ -4,7 +4,7 @@ namespace DiGi.VoTT
 {
     public static partial class Create
     {
-        public static BoundingBox BoundingBox(double x_1, double y_1, double x_2, double y_2)
+        public static BoundingBox? BoundingBox(double x_1, double y_1, double x_2, double y_2)
         {
             if(double.IsNaN(x_1) || double.IsNaN(y_1) || double.IsNaN(x_2) || double.IsNaN(y_2))
             {
