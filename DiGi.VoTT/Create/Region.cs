@@ -10,15 +10,15 @@ namespace DiGi.VoTT
         {
             return Region(BoundingBox(x_1, y_1, x_2, y_2), tagName);
         }
-        
+
         public static Region? Region(this BoundingBox? boundingBox, string tagName)
         {
-            if(boundingBox == null || string.IsNullOrWhiteSpace(tagName))
+            if (boundingBox == null || string.IsNullOrWhiteSpace(tagName))
             {
                 return null;
             }
 
-            Region result = new ()
+            Region result = new()
             {
                 type = Constans.Region.Type.Rectangle,
                 tags = [tagName],
@@ -36,10 +36,10 @@ namespace DiGi.VoTT
                 return null;
             }
 
-            Region result = new ()
+            Region result = new()
             {
                 type = Constans.Region.Type.Polygon,
-                tags = [tagName],
+                tags = tagName == null ? [] : [tagName],
                 boundingBox = Query.BoundingBox(points),
                 points = [.. points],
             };
