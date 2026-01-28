@@ -6,7 +6,7 @@ namespace DiGi.VoTT
     {
         public static Tag? Tag(string? name)
         {
-            if(string.IsNullOrWhiteSpace(name))
+            if (string.IsNullOrWhiteSpace(name))
             {
                 return null;
             }
@@ -15,4 +15,3 @@ namespace DiGi.VoTT
         }
     }
 }
-

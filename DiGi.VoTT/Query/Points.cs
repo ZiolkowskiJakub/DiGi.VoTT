@@ -18,14 +18,14 @@ namespace DiGi.VoTT
             float width_max = float.NaN;
             float height_max = float.NaN;
 
-            foreach (Point point in points) 
+            foreach (Point point in points)
             {
-                if(point == null)
+                if (point == null)
                 {
                     continue;
                 }
 
-                if(float.IsNaN(width_min) || point.x < width_min)
+                if (float.IsNaN(width_min) || point.x < width_min)
                 {
                     width_min = point.x;
                 }
@@ -46,12 +46,12 @@ namespace DiGi.VoTT
                 }
             }
 
-            if(float.IsNaN(width_min) || float.IsNaN(height_min) || float.IsNaN(width_max) || float.IsNaN(height_max))
+            if (float.IsNaN(width_min) || float.IsNaN(height_min) || float.IsNaN(width_max) || float.IsNaN(height_max))
             {
                 return null;
             }
 
-            return new BoundingBox() 
+            return new BoundingBox()
             {
                 left = width_min,
                 top = height_max,
@@ -61,4 +61,3 @@ namespace DiGi.VoTT
         }
     }
 }
-

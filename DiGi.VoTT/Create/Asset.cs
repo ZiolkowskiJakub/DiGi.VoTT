@@ -11,7 +11,7 @@ namespace DiGi.VoTT
                 return null;
             }
 
-            Asset result = new ()
+            Asset result = new()
             {
                 id = id,
             };
@@ -26,7 +26,7 @@ namespace DiGi.VoTT
                 return null;
             }
 
-            Asset result = new ()
+            Asset result = new()
             {
                 format = System.IO.Path.GetExtension(path).Substring(1),
                 name = System.IO.Path.GetFileName(path),
@@ -40,4 +40,3 @@ namespace DiGi.VoTT
         }
     }
 }
-

@@ -1,5 +1,4 @@
-﻿
-namespace DiGi.VoTT
+﻿namespace DiGi.VoTT
 {
     public static partial class Query
     {
@@ -9,4 +8,3 @@ namespace DiGi.VoTT
         }
     }
 }
-

@@ -8,27 +8,26 @@ namespace DiGi.VoTT
     {
         public static bool Write(this VoTTModel voTTModel, string path)
         {
-            if(voTTModel == null || string.IsNullOrWhiteSpace(path))
+            if (voTTModel == null || string.IsNullOrWhiteSpace(path))
             {
                 return false;
             }
 
-            if(!Directory.Exists(Path.GetDirectoryName(path)))
+            if (!Directory.Exists(Path.GetDirectoryName(path)))
             {
                 return false;
             }
 
             JsonSerializerOptions jsonSerializerOptions = new()
-            { 
-                WriteIndented = true 
+            {
+                WriteIndented = true
             };
-            
+
             string json = JsonSerializer.Serialize(voTTModel, jsonSerializerOptions);
-            
+
             File.WriteAllText(path, json);
 
             return true;
         }
     }
 }
-

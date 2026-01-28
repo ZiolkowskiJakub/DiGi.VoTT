@@ -7,8 +7,5 @@
             public const string Rectangle = "RECTANGLE";
             public const string Polygon = "POLYGON";
         }
-
-        
     }
 }
-

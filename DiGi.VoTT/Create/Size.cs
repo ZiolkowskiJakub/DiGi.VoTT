@@ -6,7 +6,7 @@ namespace DiGi.VoTT
     {
         public static Classes.Size? Size(string? path)
         {
-            if(string.IsNullOrWhiteSpace(path) || !System.IO.File.Exists(path))
+            if (string.IsNullOrWhiteSpace(path) || !System.IO.File.Exists(path))
             {
                 return null;
             }
@@ -22,4 +22,3 @@ namespace DiGi.VoTT
         }
     }
 }
-

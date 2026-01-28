@@ -19,7 +19,7 @@ namespace DiGi.VoTT
 
             voTTModel.assets ??= [];
 
-            if(!voTTModel.assets.TryGetValue(asset.id, out AssetData assetData) || assetData == null)
+            if (!voTTModel.assets.TryGetValue(asset.id, out AssetData assetData) || assetData == null)
             {
                 voTTModel.assets[asset.id] = new AssetData()
                 {
@@ -33,15 +33,15 @@ namespace DiGi.VoTT
 
             return true;
         }
-        
+
         public static bool Add(this VoTTModel? voTTModel, AssetData? assetData)
         {
-            if(voTTModel == null || assetData?.asset == null)
+            if (voTTModel == null || assetData?.asset == null)
             {
                 return false;
             }
 
-            if(assetData.asset.id == null)
+            if (assetData.asset.id == null)
             {
                 return false;
             }
@@ -50,18 +50,17 @@ namespace DiGi.VoTT
 
             voTTModel.assets[assetData.asset.id] = assetData;
 
-            if(assetData.regions != null)
+            if (assetData.regions != null)
             {
-                foreach(Region region in assetData.regions)
+                foreach (Region region in assetData.regions)
                 {
-                    if(region?.tags != null)
+                    if (region?.tags != null)
                     {
-                        foreach(string tagName in region.tags)
+                        foreach (string tagName in region.tags)
                         {
                             Add(voTTModel, tagName);
                         }
                     }
-
                 }
             }
 
@@ -79,9 +78,9 @@ namespace DiGi.VoTT
 
             if (!voTTModel.assets.TryGetValue(assetId, out AssetData assetData_Temp) || assetData_Temp == null)
             {
-                assetData_Temp = new AssetData() 
-                { 
-                    asset = Create.Asset_ById(assetId) 
+                assetData_Temp = new AssetData()
+                {
+                    asset = Create.Asset_ById(assetId)
                 };
 
                 if (assetData_Temp == null)
@@ -123,13 +122,12 @@ namespace DiGi.VoTT
             }
 
             Region? region = Create.Region(boundingBox, tagName!);
-            if(region == null)
+            if (region == null)
             {
                 return false;
             }
 
             return Add(voTTModel, assetId, region);
-
         }
 
         public static bool Add(this VoTTModel? voTTModel, string? assetId, IEnumerable<Point>? points, string? tagName)
@@ -150,17 +148,17 @@ namespace DiGi.VoTT
 
         public static bool Add(this VoTTModel? voTTModel, string? tagName)
         {
-            if(voTTModel == null || string.IsNullOrWhiteSpace(tagName))
+            if (voTTModel == null || string.IsNullOrWhiteSpace(tagName))
             {
                 return false;
             }
 
             voTTModel.tags ??= [];
 
-            if(voTTModel.tags.Find(x => x.name == tagName) == null)
+            if (voTTModel.tags.Find(x => x.name == tagName) == null)
             {
                 Tag? tag = Create.Tag(tagName);
-                if(tag == null)
+                if (tag == null)
                 {
                     return false;
                 }
@@ -172,4 +170,3 @@ namespace DiGi.VoTT
         }
     }
 }
-

@@ -8,28 +8,25 @@ namespace DiGi.VoTT
     {
         public static VoTTModel? Read(string? path)
         {
-            if(string.IsNullOrWhiteSpace(path) || !File.Exists(path))
+            if (string.IsNullOrWhiteSpace(path) || !File.Exists(path))
             {
                 return null;
             }
 
             string json = File.ReadAllText(path);
-            if(string.IsNullOrWhiteSpace(json))
+            if (string.IsNullOrWhiteSpace(json))
             {
                 return null;
             }
 
-
             JsonSerializerOptions jsonSerializerOptions = new()
-            { 
-                WriteIndented = true 
+            {
+                WriteIndented = true
             };
 
-
             VoTTModel? result = JsonSerializer.Deserialize<VoTTModel>(json, jsonSerializerOptions);
-            
+
             return result;
         }
     }
 }
-
