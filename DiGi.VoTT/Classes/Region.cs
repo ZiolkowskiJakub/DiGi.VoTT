@@ -6,7 +6,7 @@ namespace DiGi.VoTT.Classes
     public class Region
     {
         public string id { get; set; } = Guid.NewGuid().ToString("N");
-        public string type { get; set; } = Constans.Region.Type.Rectangle;
+        public string type { get; set; } = Constants.Region.Type.Rectangle;
         public List<string> tags { get; set; } = [];
         public BoundingBox? boundingBox { get; set; }
         public List<Point> points { get; set; } = [];

@@ -6,6 +6,6 @@ namespace DiGi.VoTT.Classes
     {
         public Asset? asset { get; set; }
         public List<Region> regions { get; set; } = [];
-        public string version { get; set; } = Constans.Core.Version;
+        public string version { get; set; } = Constants.Core.Version;
     }
 }

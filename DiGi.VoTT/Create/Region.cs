@@ -20,7 +20,7 @@ namespace DiGi.VoTT
 
             Region result = new()
             {
-                type = Constans.Region.Type.Rectangle,
+                type = Constants.Region.Type.Rectangle,
                 tags = [tagName],
                 boundingBox = boundingBox,
                 points = Query.Points(boundingBox) ?? [],
@@ -38,7 +38,7 @@ namespace DiGi.VoTT
 
             Region result = new()
             {
-                type = Constans.Region.Type.Polygon,
+                type = Constants.Region.Type.Polygon,
                 tags = tagName == null ? [] : [tagName],
                 boundingBox = Query.BoundingBox(points),
                 points = [.. points],

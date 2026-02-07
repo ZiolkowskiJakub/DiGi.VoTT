@@ -1,4 +1,4 @@
-﻿namespace DiGi.VoTT.Constans
+﻿namespace DiGi.VoTT.Constants
 {
     public static class Core
     {

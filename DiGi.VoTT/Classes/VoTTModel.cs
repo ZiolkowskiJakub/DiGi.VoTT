@@ -9,8 +9,8 @@ namespace DiGi.VoTT.Classes
         public string name { get; set; } = string.Empty;
         public string securityToken { get; set; } = string.Empty;
         public string description { get; set; } = string.Empty;
-        public string format { get; set; } = Constans.VoTTModel.Format;
-        public string version { get; set; } = Constans.Core.Version;
+        public string format { get; set; } = Constants.VoTTModel.Format;
+        public string version { get; set; } = Constants.Core.Version;
         public List<Tag>? tags { get; set; }
         public Dictionary<string, AssetData> assets { get; set; } = [];
     }
