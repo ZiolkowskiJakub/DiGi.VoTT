@@ -6,6 +6,9 @@ namespace DiGi.VoTT
 {
     public static partial class Query
     {
+        /// <summary>Calculates the bounding box for a given collection of points.</summary>
+        /// <param name="points">The collection of <see cref="Point"/> objects to evaluate.</param>
+        /// <returns>A <see cref="BoundingBox"/> representing the minimum and maximum coordinates, or <c>null</c> if the input is null or contains fewer than two points.</returns>
         public static BoundingBox? BoundingBox(this IEnumerable<Point>? points)
         {
             if (points == null || points.Count() < 2)

@@ -4,6 +4,9 @@ namespace DiGi.VoTT
 {
     public static partial class Create
     {
+        /// <summary>Creates an <see cref="Asset"/> instance using the specified identifier.</summary>
+        /// <param name="id">The unique identifier of the asset.</param>
+        /// <returns>An <see cref="Asset"/> object if a valid identifier is provided; otherwise, <c>null</c>.</returns>
         public static Asset? Asset_ById(string? id)
         {
             if (id == null)
@@ -19,6 +22,9 @@ namespace DiGi.VoTT
             return result;
         }
 
+        /// <summary>Creates an <see cref="Asset"/> instance from the specified file path.</summary>
+        /// <param name="path">The system path to the asset file.</param>
+        /// <returns>An <see cref="Asset"/> object if the file exists at the given path; otherwise, <c>null</c>.</returns>
         public static Asset? Asset(string? path)
         {
             if (string.IsNullOrWhiteSpace(path) || !System.IO.File.Exists(path))

@@ -6,6 +6,9 @@ namespace DiGi.VoTT
 {
     public static partial class Modify
     {
+        /// <summary>Reads a <see cref="VoTTModel"/> from the specified file path.</summary>
+        /// <param name="path">The path to the JSON file containing the model data.</param>
+        /// <returns>A <see cref="VoTTModel"/> instance if the file is successfully read and deserialized; otherwise, null.</returns>
         public static VoTTModel? Read(string? path)
         {
             if (string.IsNullOrWhiteSpace(path) || !File.Exists(path))
