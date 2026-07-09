@@ -1,4 +1,4 @@
-#### [DiGi\.VoTT](index.md 'index')
+#### [DiGi\.VoTT](DiGi.VoTT.Overview.md 'DiGi\.VoTT\.Overview')
 
 ## DiGi\.VoTT\.Enums Namespace
 ### Enums
